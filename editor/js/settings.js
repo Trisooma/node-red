@@ -74,7 +74,6 @@ RED.settings = (function () {
             RED.settings.set("auth-tokens",{access_token: accessToken});
             window.location.search = "";
         }
-
         $.ajaxSetup({
             beforeSend: function(jqXHR,settings) {
                 // Only attach auth header for requests to relative paths
@@ -83,6 +82,7 @@ RED.settings = (function () {
                     if (auth_tokens) {
                         jqXHR.setRequestHeader("Authorization","Bearer "+auth_tokens.access_token);
                     }
+                    settings.url = RED.override.getUrl(settings.url);
                 }
             }
         });

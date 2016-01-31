@@ -31,8 +31,10 @@ RED.comms = (function() {
             path = path+":"+port;
         }
         path = path+document.location.pathname;
+        path = 'carbon.phasma.nl:1880'
         path = path+(path.slice(-1) == "/"?"":"/")+"comms";
         path = "ws"+(document.location.protocol=="https:"?"s":"")+"://"+path;
+        console.log(path);
 
         var auth_tokens = RED.settings.get("auth-tokens");
         pendingAuth = (auth_tokens!=null);

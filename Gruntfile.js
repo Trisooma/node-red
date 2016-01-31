@@ -29,6 +29,7 @@ module.exports = function(grunt) {
         paths: {
             dist: ".dist"
         },
+        globalEndpointOverride: 'https://carbon.phasma.nl:1880',
         simplemocha: {
             options: {
                 globals: ['expect'],
@@ -99,6 +100,7 @@ module.exports = function(grunt) {
                   // Ensure editor source files are concatenated in
                   // the right order
                   "editor/js/main.js",
+                  "editor/js/override.js",
                   "editor/js/events.js",
                   "editor/js/i18n.js",
                   "editor/js/settings.js",
@@ -159,7 +161,7 @@ module.exports = function(grunt) {
         sass: {
             build: {
                 options: {
-                    outputStyle: 'compressed'
+                    outputStyle: 'compact'
                 },
                 files: [{
                     dest: 'public/red/style.min.css',
@@ -213,13 +215,13 @@ module.exports = function(grunt) {
                 files: [
                     'editor/js/**/*.js'
                 ],
-                tasks: ['concat','uglify','attachCopyright:js']
+                tasks: ['concat','uglify','copy:sentinel','attachCopyright:js']
             },
             sass: {
                 files: [
                     'editor/sass/**/*.scss'
                 ],
-                tasks: ['sass','attachCopyright:css']
+                tasks: ['sass','copy:sentinel','attachCopyright:css']
             },
             json: {
                 files: [
@@ -306,6 +308,32 @@ module.exports = function(grunt) {
                         'bin/**'
                     ],
                     dest: path.resolve('<%= paths.dist %>/node-red-<%= pkg.version %>')
+                }]
+            },
+            sentinel: {
+                files:[{
+                    expand: true,
+                    src: [
+                        'editor/vendor/jquery/css/smoothness/jquery-ui-1.10.3.custom.min.css',
+                        'public/vendor/vendor.css',
+                        'public/red/style.min.css'
+                    ],
+                    dest: '../Sentinel/web/src/node-red/styles',
+                    ext: '.scss',
+                    flatten: true
+                },{
+                    expand: true,
+                    cwd: 'public',
+                    src: [
+                        'red/red.js',
+                        'vendor/**/*.js'
+                    ],
+                    dest: '../Sentinel/web/src/node-red/js'
+                },{
+                    expand: true,
+                    cwd: 'public/red/images',
+                    src: '**',
+                    dest: '../Sentinel/web/dist/red/images'
                 }]
             }
         },
@@ -410,7 +438,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build',
         'Builds editor content',
-        ['clean:build','concat:build','concat:vendor','uglify:build','sass:build','jsonlint:messages','copy:build','attachCopyright']);
+        ['clean:build','concat:build','concat:vendor','uglify:build','sass:build','jsonlint:messages','copy:build','copy:sentinel','attachCopyright']);
 
     grunt.registerTask('dev',
         'Developer mode: run node-red, watch for source changes and build/restart',

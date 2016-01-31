@@ -25,6 +25,7 @@ var nopt = require("nopt");
 var path = require("path");
 var fs = require("fs-extra");
 var RED = require("./red/red.js");
+var cors = require('cors');
 
 var server;
 var app = express();
@@ -114,6 +115,24 @@ try {
 
 if (parsedArgs.v) {
     settings.verbose = true;
+}
+
+
+if(settings.globalHttpCors) {
+    var allowCrossDomain = function(req, res, next) {
+        if(settings.globalHttpCors.origin) {
+            res.header('Access-Control-Allow-Origin', settings.globalHttpCors.origin);
+        }
+        if(settings.globalHttpCors.methods) {
+            res.header('Access-Control-Allow-Methods', settings.globalHttpCors.methods);
+        }
+        if(settings.globalHttpCors.headers) {
+            res.header('Access-Control-Allow-Headers', settings.globalHttpCors.headers);
+        }
+        next();
+    };
+    app.use(allowCrossDomain);
+    console.log("Global CORS override for server is enabled");
 }
 
 if (settings.https) {
