@@ -212,14 +212,14 @@
 }
 
 .link_outline {
-    stroke: #fff;
+    stroke: $link-background;
     stroke-width: 4;
     cursor: crosshair;
     fill: none;
     pointer-events: none;
 }
 .link_background {
-    stroke: #fff;
+    stroke: $link-background;
     opacity: 0;
     stroke-width: 20;
     cursor: crosshair;

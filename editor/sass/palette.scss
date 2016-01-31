@@ -20,7 +20,7 @@
     top: 0px;
     bottom: 0px;
     left:0px;
-    background: #f3f3f3;
+    background: #222;
     width: 180px;
     text-align: center;
     @include disable-selection;
@@ -48,7 +48,8 @@
     left:0;
     right:0;
     overflow: hidden;
-    background: #ffffff;
+    background: $palette-search-background;
+    color: $palette-search-color;
     text-align: center;
     height: 35px;
     padding: 3px;
@@ -57,7 +58,7 @@
 }
 #palette-search i {
     font-size: 10px;
-    color: #666;
+    color: white;
 }
 #palette-search i.fa-search {
     position: absolute;
@@ -87,6 +88,8 @@
     box-shadow: none;
     -webkit-box-shadow: none;
     padding: 3px 17px 3px 22px;
+    background:inherit;
+    color:white;
     margin: 0px;
     height: 30px;
     box-sizing:border-box;
@@ -106,16 +109,17 @@
 
 
 .palette-category {
-    border-bottom: 1px solid #ccc;
+    border-bottom: $palette-header-border-bottom;
 }
 .palette-content {
-    background: #fff;
+    background: $palette-content-background;
     padding: 3px;
 }
 
 .palette-header {
     position: relative;
     background: $palette-header-background;
+    color: $palette-header-color;
     cursor: pointer;
     text-align: left;
     padding: 9px;
@@ -155,7 +159,7 @@
 
 .palette_node {
     cursor:move;
-    background: #ddd;
+    background: $palette-node-background;
     margin: 10px auto;
     height: 25px;
     border-radius: 5px;
@@ -168,7 +172,7 @@
 }
 .palette_node:hover {
     border-color: $node-selected-color;
-    background-color: #eee;
+    background-color: pink;
 }
 .palette_port {
     position: absolute;
@@ -189,7 +193,7 @@
 
 .palette_node:hover .palette_port {
     border-color: #999;
-    background-color: #eee;
+    background-color: #222;
 }
 .palette_icon_container {
     position: absolute;

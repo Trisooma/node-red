@@ -14,6 +14,24 @@
  * limitations under the License.
  **/
 
+$gray-darker:   lighten(#000, 13.5%) !default; // #222
+$gray-dark:     lighten(#000, 20%) !default;   // #333
+$gray:          lighten(#000, 33.5%) !default; // #555
+$gray-light:    lighten(#000, 46.7%) !default; // #777
+$gray-lighter:  lighten(#000, 93.5%) !default; // #eee
+$foreground:    white;
+
+$palette-search-background: $gray-darker;
+$palette-search-color: $foreground;
+$palette-content-background: $gray-darker;
+$palette-node-background: $gray-dark;
+
+
+$palette-header-background: $gray-darker;
+$palette-header-color: $foreground;
+$palette-header-border-bottom: 1px solid #444;
+
+
 $form-placeholder-color: #bbbbbb;
 $form-text-color: #444;
 $form-input-focus-color:  rgba(85,150,230,0.8);
@@ -22,18 +40,19 @@ $form-input-border-color:  #ccc;
 
 $node-selected-color: #ff7f0e;
 $port-selected-color: #ff7f0e;
+
+$link-background: $gray;
 $link-color: #888;
 $link-subflow-color: #bbb;
 $link-unknown-color: #f00;
 
-$primary-border-color: #bbbbbb;
-$secondary-border-color: #dddddd;
+$primary-border-color: #333;
+$secondary-border-color: #888;
 
-$tab-background-active: #fff;
-$tab-background-inactive: #f0f0f0;
-$tab-background-hover: #ddd;
+$tab-background-active: #444;
+$tab-background-inactive: #222;
+$tab-background-hover: #448;
 
-$palette-header-background: #f3f3f3;
 
 $workspace-button-background: #fff;
 $workspace-button-background-hover: #ddd;

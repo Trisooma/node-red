@@ -17,7 +17,7 @@
 
 #chart {
    overflow: auto;
-   background: #e3e3e3;
+   background: #222;
    position: absolute;
    bottom:25px;
    top: 35px;
@@ -25,6 +25,7 @@
    right:0px;
    box-sizing:border-box;
    transition: right 0.2s ease;
+   fill: #222;
 }
 
 #chart svg:focus {
@@ -48,6 +49,7 @@
 
 #workspace-tabs {
     margin-right: 35px;
+    color: white;
 }
 
 #workspace-add-tab {
