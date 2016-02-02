@@ -14,13 +14,13 @@
  * limitations under the License.
  **/
 
-$back: white;
+$back: #333;
 $back-dark: darken($back,2%);
 $back-light: lighten($back,2%);
 
-$inactive: darken($back,8%);
-$hover: darken($back,4%);
-$fore: black;
+$inactive: darken($back,4%);
+$hover: lighten($back,4%);
+$fore: white;
 $color-disabled: darken($fore,5%);
 
 $primary-border-color: darken($back,7.5%);
